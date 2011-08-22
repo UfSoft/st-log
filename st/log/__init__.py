@@ -12,14 +12,14 @@
     :license: BSD, see LICENSE for more details.
 """
 
-__version__     = '1.0'
-__package__     = 'ST-Log'
-__summary__     = "Python's standard logging helpers"
-__author__      = 'Pedro Algarvio'
-__email__       = 'pedro@algarvio.me'
-__license__     = 'BSD'
-__url__         = 'http://dev.ufsoft.org/projects/log'
-__description__ = __doc__
+__version__         = '1.0'
+__package_name__    = 'ST-Log'
+__summary__         = "Python's standard logging helpers"
+__author__          = 'Pedro Algarvio'
+__email__           = 'pedro@algarvio.me'
+__license__         = 'BSD'
+__url__             = 'http://dev.ufsoft.org/projects/log'
+__description__     = __doc__
 
 import new
 import logging
