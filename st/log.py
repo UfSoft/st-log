@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    st.log
+    ST-Log
     ~~~~~~
 
     Simple package that extends python's standard logging by adding to it
@@ -38,6 +38,8 @@ LOG_LEVELS = {
 
 LoggingLoggerClass = logging.getLoggerClass()
 
+DEFAULT_FMT = '%(asctime)s,%(msecs)03.0f [%(name)-15s][%(levelname)-8s] %(message)s'
+
 
 def setup_logging():
     """
@@ -74,7 +76,7 @@ def setup_console_logger(level, fmt=None):
     handler = logging.StreamHandler()
 
     if fmt is None:
-        fmt = '%(asctime)s,%(msecs)03.0f [%(name)-15s][%(levelname)-8s] %(message)s'
+        fmt = DEFAULT_FMT
 
     handler.setLevel(level)
     formatter = logging.Formatter(fmt, datefmt="%H:%M:%S")
@@ -97,7 +99,7 @@ def setup_logfile_logger(level, logfile, fmt=None):
     )
 
     if fmt is None:
-        fmt = '%(asctime)s [%(name)-15s][%(levelname)-8s] %(message)s'
+        fmt = DEFAULT_FMT
 
     handler.setLevel(level)
     formatter = logging.Formatter(fmt, datefmt="%H:%M:%S")

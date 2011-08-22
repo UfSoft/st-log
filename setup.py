@@ -17,7 +17,7 @@ setup(name=package.__package_name__,
       platforms="OS Independent - Anywhere Python's Logging is known to run.",
       keywords = "Logging",
       namespace_packages = ["st"],
-      packages = find_packages(),
+      packages = ["st"],
       classifiers=[
           'Development Status :: 4 - Beta',
           'License :: OSI Approved :: BSD License',
