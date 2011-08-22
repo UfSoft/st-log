@@ -19,7 +19,7 @@ setup(name=package.__package_name__,
       namespace_packages = ["st"],
       packages = find_packages(),
       classifiers=[
-          'Development Status :: 5 - Alpha',
+          'Development Status :: 4 - Beta',
           'License :: OSI Approved :: BSD License',
           'Operating System :: OS Independent',
           'Programming Language :: Python',
