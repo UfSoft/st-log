@@ -70,6 +70,7 @@ def setup_console_logger(level, fmt=None):
     """
     Setup console logging.
     """
+    import logging
     setup_logging()
     level = LOG_LEVELS.get(level.lower(), logging.ERROR)
     rootLogger = logging.getLogger()
@@ -88,6 +89,7 @@ def setup_logfile_logger(level, logfile, fmt=None):
     """
     Setup logfile logging.
     """
+    import logging
     setup_logging()
     level = LOG_LEVELS.get(level.lower(), logging.ERROR)
     rootLogger = logging.getLogger()
@@ -112,6 +114,7 @@ def set_logger_level(logger_name, level):
     """
     Tweak a specific logger's logging level
     """
+    import logging
     setup_logging()
     logging.getLogger(logger_name).setLevel(
         LOG_LEVELS.get(level.lower(), logging.ERROR)
