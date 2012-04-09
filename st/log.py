@@ -51,8 +51,11 @@ class Logging(LoggingLoggerClass):
         # This makes module name padding increase to the biggest module name
         # so that logs keep readability.
         instance = super(Logging, cls).__new__(cls)
-        if len(logger_name) > MAX_LOGGER_NAME_LENGTH:
-            MAX_LOGGER_NAME_LENGTH = len(logger_name)
+
+        max_logger_name = max(logging.Logger.manager.loggerDict.keys())
+
+        if len(max_logger_name) > MAX_LOGGER_NAME_LENGTH:
+            MAX_LOGGER_NAME_LENGTH = len(max_logger_name)
             formatter = logging.Formatter(DEFAULT_FMT % MAX_LOGGER_NAME_LENGTH,
                                           datefmt="%H:%M:%S")
             for handler in logging.getLogger().handlers:
