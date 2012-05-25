@@ -52,18 +52,22 @@ class Logging(LoggingLoggerClass):
         # so that logs keep readability.
         instance = super(Logging, cls).__new__(cls)
 
-        max_logger_name = max(logging.Logger.manager.loggerDict.keys())
+        try:
+            max_logger_name = max(logging.Logger.manager.loggerDict.keys())
 
-        if len(max_logger_name) > MAX_LOGGER_NAME_LENGTH:
-            MAX_LOGGER_NAME_LENGTH = len(max_logger_name)
-            formatter = logging.Formatter(DEFAULT_FMT % MAX_LOGGER_NAME_LENGTH,
-                                          datefmt="%H:%M:%S")
-            for handler in logging.getLogger().handlers:
-                if not handler.lock:
-                    handler.createLock()
-                handler.acquire()
-                handler.setFormatter(formatter)
-                handler.release()
+            if len(max_logger_name) > MAX_LOGGER_NAME_LENGTH:
+                MAX_LOGGER_NAME_LENGTH = len(max_logger_name)
+                formatter = logging.Formatter(DEFAULT_FMT % MAX_LOGGER_NAME_LENGTH,
+                                              datefmt="%H:%M:%S")
+                for handler in logging.getLogger().handlers:
+                    if not handler.lock:
+                        handler.createLock()
+                    handler.acquire()
+                    handler.setFormatter(formatter)
+                    handler.release()
+        except ValueError:
+            # There are no registered loggers yet
+            pass
         return instance
 
 def setup_logging(increase_padding=False):
